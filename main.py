@@ -1,29 +1,26 @@
-plik = open('in.txt', "a")
-if plik.writable():
-    plik.write(input('Podaj tekst: ') + "\n")
-plik.close()
+import os
+
+from files import FileHandler
+
+BASE_FOLDER = 'pliki'
+FILE_INPUT = 'in.txt'
+FILE_OUTPUT = 'out_2.txt'
+
+file_path_input = os.path.join(FOLDER, FILE_INPUT)
+file_path_output = os.path.join(FOLDER, FILE_OUTPUT)
 
 
-plik = open('in.txt', 'r')
+history = []
 
-if plik.readable():
-    print("Zawartosc pliku: ")
-    tekst = plik.read()
-    print(tekst)
+file_handler = FileHandler(file_path_read=file_path_input, file_path_write=file_path_output)
+file_handler.read_history()
+print(file_handler.history)
 
-if plik.readable():
-    print("Zawartosc pliku: ")
-    tekst = plik.readlines()
-    print(tekst)
-    for l in tekst:
-        print()
+file_handler.write_history()
 
-# class magazyn:
-#     def __init__(self):
-#         self.sprzedaz = {}
+# read_history(file_path=file_path)
 #
-#     def wczytaj_zawartosc(self, sciezka_do_pliku):
-#         with open(sciezka_do_pliku, 'r') as f:
-#             while True:
-
-
+# print(history)
+#
+#
+# write_history('history.txt')
