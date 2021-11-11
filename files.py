@@ -6,8 +6,8 @@ class FileHandler:
             self.file_path_write = file_path_write
         else:
             self.file_path_write = file_path_read
-        print(self.file_path_write)
-        print(self.file_path_read)
+
+
 
     def read_history(self):
         with open(self.file_path_read,'r') as file:
@@ -27,11 +27,11 @@ class FileHandler:
                     command.extend([product_name, product_price, product_value])
                 self.history.append(command)
 
-    def write_history(self):
+    def write_history(self, history):
         with open(self.file_path_write, 'w') as file:
-            for command in self.history:
+            for command in history:
                 for element in command:
                     file.write(str(element)+'\n')
-            file.write('stop')
+            file.write('stop\n')
 
 # fh = FileHandler(sciezka_odczyt = 'sciezka_pierwsza', sciezka_zapis= 'sciezka_druga')
